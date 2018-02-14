@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title> 
+	ssimon_courseProject 
+	</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/mainCSS.css">
+    <link href="smartmenus/sm-core-css.css" rel="stylesheet">
+    <link href="smartmenus/sm-simple.css" rel="stylesheet">
+	<script src="jquery/jquery-3.2.1.min.js"></script> 
+    <script src="smartmenus/jquery.smartmenus.min.js"></script>
+    <script src="jquery_validate/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+    		$('#gallery a:first').click();
+        $('.sm').smartmenus({
+        showFunction: function($ul, complete) {
+            $ul.slideDown(250, complete);
+        },
+        hideFunction: function($ul, complete) {
+            $ul.slideUp(250, complete);
+        }
+        }); //end smartmenus
+        $('#contactUs').validate({
+        rules: {
+            email: {
+                required:true,
+                email:true
+            },
+            comments: {
+                required: true,
+                rangelength:[0,250]
+            }
+            }, //end rules
+        messages: {
+                email: {
+                    required: "Please supply your e-mail address.",
+                    email: "This is not a valid e-mail address."
+                },
+                comments: {
+                    required: 'Please provide a description of the problem.',
+                    rangelength: 'Description should not be more than 250 characters.'
+                }
+            }//end messages
+        }); //end validate()
+        }); // end ready
+</script>
+</head>
+<body> 
+	<div id="wrapper">
+	<header>
+	<h1>Shaneda Simon</h1>
+	</header>
+    <ul class="sm sm-simple">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contactUs.html">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="membership.html">Membership</a>
+          <ul>
+            <li><a href="#">Free Access</a></li>
+            <li><a href="#">Premium</a></li>
+          </ul>
+            </li>
+            <li><a href="#">Dating Advice</a>
+              <ul>
+                <li><a href="#">Chatroom</a></li>
+                <li><a href="#">Forum</a></li>
+              </ul>
+            </li>
+          </ul>
+	<aside>
+	</aside>
+	<section>
+		<article>
+			<h2>Contact Us</h2>
+			<p class="lead">Please fill in the information below:</p>
+			<form method="post" action="" name="contactUs" id="contactUs">
+				<p>First Name: <br>
+					<input type="text" name="fname" placeholder="first name"><br>
+					<span class="err" id="fnErr"></span>
+				<p>Last Name: <br>
+					<input type="text" name="lname" placeholder="last name"><br>
+					<span class="err" id="lnErr"></span>
+				<p>Email: <br>
+					<input type="text" name="email" placeholder="you@youremail.com">
+					<br>
+					<span class="err" id="emErr"></span>
+				<p> Phone: <br>
+					<input type="tel" name="phone1" placeholder="XXX" maxlength="3">
+					<input type="tel" name="phone2" placeholder="XXX" maxlength="3" class="shortmargin">
+					<input type="tel" name="phone3" placeholder="XXXX" maxlength="4" class="shortmargin"><br>
+					<span class="err" id="phErr"></span>
+				</p>
+				<p>How can we help? <br>
+					<textarea name="comments" placeholder="Describe your problem" class="adj"></textarea><br>
+					<span class="err" id="cmErr"></span>
+				</p>
+				<p><input type="submit" value="Send Information"></p>
+			</form>
+		</article>
+	</section>
+	</article>
+		<aside>
+		</aside>
+	<footer>
+		<p>Copyright &copy; 2018 All Rights Reserved</p>
+	</footer>
+	</div>
+</body>
+</html>

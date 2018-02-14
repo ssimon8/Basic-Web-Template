@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title> 
+	ssimon_courseProject 
+	</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/mainCSS.css">
+    <link href="smartmenus/sm-core-css.css" rel="stylesheet">
+    <link href="smartmenus/sm-simple.css" rel="stylesheet">
+	<script src="jquery/jquery-3.2.1.min.js"></script> 
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script src="smartmenus/jquery.smartmenus.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+            $('#gallery img').each(function(i) {
+    var imgFile = $(this).attr('src');
+    var preloadImage = new Image();
+    var imgExt = /(\.\w{3,4}$)/;
+    preloadImage.src = imgFile.replace(imgExt,'_h$1');
+        
+    $(this).hover(
+        function() {
+            $(this).attr('src', preloadImage.src);
+        },
+        function () {
+        var currentSource=$(this).attr('src');
+            $(this).attr('src', imgFile);
+    }); // end hover
+}); // end each
+    
+    $('#gallery a').click(function(evt) {
+        evt.preventDefault();
+        var imgPath = $(this).attr('href');
+        var oldImage = $('#photo img');
+        var newImage = $('<img src="' + imgPath + '">');
+        newImage.hide();
+        $('#photo').prepend(newImage);
+        newImage.fadeIn(1000);
+        oldImage.fadeOut(1000,function() {
+            $(this).remove();
+        }); //end fadeout
+    });//end click
+    $('#gallery a:first').click();
+    $('.sm').smartmenus({
+    showFunction: function($ul, complete) {
+      $ul.slideDown(250, complete);
+    },
+    hideFunction: function($ul, complete) {
+      $ul.slideUp(250, complete);
+    }
+  }); //end smartmenus
+}); // end ready
+</script>
+</head>
+<body> 
+	<div id="wrapper">
+	<header>
+	<h1>Shaneda Simon</h1>
+	</header>
+      <ul class="sm sm-simple">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contactUs.html">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="membership.html">Membership</a>
+          <ul>
+            <li><a href="#">Free Access</a></li>
+            <li><a href="#">Premium</a></li>
+          </ul>
+            </li>
+            <li><a href="#">Dating Advice</a>
+              <ul>
+                <li><a href="#">Chatroom</a></li>
+                <li><a href="#">Forum</a></li>
+              </ul>
+            </li>
+          </ul>
+	<div class="content">
+        <div class="main">
+            <div id="gallery"> <a href="images/large/slide1.jpg"><img src="images/small/slide1.jpg" width="70" height="70" alt="marriage"></a> <a href="images/large/slide2.jpg"><img src="images/small/slide2.jpg" width="70" height="70" alt="burning desire"></a> <a href="images/large/slide3.jpg"><img src="images/small/slide3.jpg" width="70" height="70" alt="cuddling"></a> <a href="images/large/slide4.jpg"><img src="images/small/slide4.jpg" width="70" height="70" alt="soul connection"></a> <a href="images/large/slide5.jpg"><img src="images/small/slide5.jpg" width="70" height="70" alt="beach"></a> <a href="images/large/slide6.jpg"><img src="images/small/slide6.jpg" width="70" height="70" alt="romance"></a></div>
+            <div id="photo"></div>
+        </div>
+    </div>
+	<footer>
+		<p>Copyright &copy; 2018 All Rights Reserved</p>
+	</footer>
+	</div>
+</body>
+</html>

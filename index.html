@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title> 
+	ssimon_courseProject  
+	</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/mainCSS.css">
+	<link href="smartmenus/sm-core-css.css" rel="stylesheet">
+    <link href="smartmenus/sm-simple.css" rel="stylesheet">
+	<script src="jquery/jquery-3.2.1.min.js"></script>
+	<script src="jquery/jquery-ui.min.js"></script>
+	<script src="smartmenus/jquery.smartmenus.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fade').hide();
+			$('.button').hide();
+			$('#expand').hover(function() {
+				$('#fade').fadeIn(3000, function() {
+					$('.button').slideDown(3000, function() {
+						$('.button').click(function () {
+							$('#fade').fadeOut(2000);
+						}); //end click
+					}); //end slide
+
+				}); //end fade
+			}); //end hover
+		$('#gallery a').click(function(evt) {
+        evt.preventDefault();
+        var imgPath = $(this).attr('href');
+        var oldImage = $('#photo img');
+        var newImage = $('<img src="' + imgPath + '">');
+        newImage.hide();
+        $('#photo').prepend(newImage);
+        newImage.fadeIn(1000);
+        oldImage.fadeOut(1000,function() {
+            $(this).remove();
+        }); //end fadeout
+    });//end click
+    $('#gallery a:first').click();
+    $('.sm').smartmenus({
+    showFunction: function($ul, complete) {
+      $ul.slideDown(250, complete);
+    },
+    hideFunction: function($ul, complete) {
+      $ul.slideUp(250, complete);
+    }
+  }); //end smartmenus
+}); //end ready
+	</script>
+</head>
+<body> 
+	<div id="wrapper">
+
+	<header>
+	<h1>Shaneda Simon</h1>
+	</header>
+	<ul class="sm sm-simple">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contactUs.html">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="membership.html">Membership</a>
+          <ul>
+            <li><a href="#">Free Access</a></li>
+            <li><a href="#">Premium</a></li>
+          </ul>
+            </li>
+            <li><a href="#">Dating Advice</a>
+              <ul>
+                <li><a href="#">Chatroom</a></li>
+                <li><a href="#">Forum</a></li>
+              </ul>
+            </li>
+          </ul>
+	<section>
+		<article>
+			<h2>Article One Heading</h2>
+			<p>
+In rhoncus tellus eu augue fringilla, a posuere magna viverra. Nulla sem ex, suscipit tincidunt orci id, gravida commodo erat. Duis vulputate lobortis bibendum. Aenean ut orci non ex malesuada tempor. In in placerat augue, eget tincidunt metus. Duis mollis faucibus tortor id pharetra. Vestibulum eget vulputate velit, id egestas odio. Aliquam nulla lectus, feugiat quis tempus eget, tincidunt ac eros. Vivamus neque ipsum, pulvinar sed sapien et, placerat gravida enim.
+</p>
+		</article>
+	</section>
+		<section>
+			<article id="expand">
+				<h2>Article Two Heading</h2>
+			<p>
+In rhoncus tellus eu augue fringilla, a posuere magna viverra. Nulla sem ex, suscipit tincidunt orci id, gravida commodo erat. Duis vulputate lobortis bibendum. Aenean ut orci non ex malesuada tempor. In in placerat augue, eget tincidunt metus. Duis mollis faucibus tortor id pharetra. Vestibulum eget vulputate velit, id egestas odio. Aliquam nulla lectus, feugiat quis tempus eget, tincidunt ac eros. Vivamus neque ipsum, pulvinar sed sapien et, placerat gravida enim.
+			</article>
+		<article id="fade">
+			<h2>Are you ready to find true love?</h2>
+			<img src="images/heart.png" id="love">
+			<input type="button" name="button" class="button" value="YES!" >
+		</article>
+	</section>
+	<footer>
+		<p>Copyright &copy; 2018 All Rights Reserved</p>
+	</footer>
+	</div>
+</body>
+</html>
